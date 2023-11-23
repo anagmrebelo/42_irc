@@ -11,7 +11,7 @@ Client::Client(int fd, sockaddr_in addr)
 	_fd = fd;
 	_status = PRE_REGISTER;
 	_password = "";
-	_nickName = "";
+	_nickName = '*';
 	_userName = "";
 	_hostname = inet_ntoa(addr.sin_addr);
 	return;

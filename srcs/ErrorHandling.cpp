@@ -27,6 +27,8 @@ std::string ErrorHandling::prepareMsg(int replyCode, Server *srv, std::string cm
 		return ":" + srv->getName() + " " + replyCodeStr + " " + nickName + " " + cmd + ":You may not reregister";
 	case ERR_SERVERFULL:
 		return ":" + srv->getName() + " " + replyCodeStr + " * :Server is full - try again later";
+	case CAP_NOT_SUPP:
+		return ":" + srv->getName() + " " + cmd + " " + nickName + " LS :";
 	default:
 		break;
 	}

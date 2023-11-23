@@ -31,6 +31,15 @@ Server *const &Executor::getSrv() const
 }
 
 // Methods
+void Executor::cap()
+{
+	// If first arg is LS
+	std::string replyMsg = ErrorHandling::prepareMsg(CAP_NOT_SUPP, _srv, _cmd->getCommandStr(), _cmd->getClientExec()->getNickName());
+	_srv->srvSend(_cmd->getClientExec()->getFd(), replyMsg);
+	// ELSE ignore and return
+	return;
+}
+
 void Executor::pass()
 {
 
@@ -41,7 +50,6 @@ void Executor::pass()
 
 		return;
 	}
-	// tmp What if is more than 1? We can choose what is the behaviour
 
 	if (_cmd->getClientExec()->getStatus() == PRE_REGISTER)
 		_cmd->getClientExec()->setPassword(_cmd->getParams().front());
@@ -56,25 +64,25 @@ void Executor::pass()
 
 void Executor::nick()
 {
-		// Chekc if args = 1
-		//  if (nickname not valid)
-		//	error -> check what type of error
-		//	return;
-		//  if (nickname is already used)
-		//		new connection -> should close connection? or give more attempts?
-		//		already connected -> should close connection? or just dont change?
-		//		ERR_NICKNAMEINUSE(433);
-		// if (nickname == "")
-		// 		set nickname
-		// else
-		// 		update nickname -check if message is needed and reply code
+	// Chekc if args = 1
+	//  if (nickname not valid)
+	//	error -> check what type of error
+	//	return;
+	//  if (nickname is already used)
+	//		new connection -> should close connection? or give more attempts?
+	//		already connected -> should close connection? or just dont change?
+	//		ERR_NICKNAMEINUSE(433);
+	// if (nickname == "")
+	// 		set nickname
+	// else
+	// 		update nickname -check if message is needed and reply code
 
-		// if status == PRE_REGISTER and nickname != "" and username != ""
-		// 		if password match
-		//			send reply code of confirmation to client
-		//			update status for REGISTERED
-		//		else
-		// 			464     ERR_PASSWDMISMATCH
+	// if status == PRE_REGISTER and nickname != "" and username != ""
+	// 		if password match
+	//			send reply code of confirmation to client
+	//			update status for REGISTERED
+	//		else
+	// 			464     ERR_PASSWDMISMATCH
 
 	return;
 }

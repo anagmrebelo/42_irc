@@ -10,6 +10,7 @@
 #define ERR_ALREADYREGISTRED 462
 #define ERR_NONICKNAMEGIVEN 431
 #define ERR_ERRONEUSNICKNAME 432
+#define CAP_NOT_SUPP 0
 
 // Commands implemented
 #define JOIN 1
@@ -29,5 +30,4 @@
 #define BUFFER_SIZE 4096
 #define MAX_PORT 65535
 
-
-# define NICKNAME_ALLOW "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890[]{}\\|-"
+#define NICKNAME_ALLOW "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890[]{}\\|-"

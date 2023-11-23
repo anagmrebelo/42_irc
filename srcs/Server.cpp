@@ -262,7 +262,7 @@ void Server::executeOneCommand(Command &cmd)
 	switch (cmd.getCommand())
 	{
 	case (CAP):
-		break;
+		executor.cap();
 	case (PASS):
 	{
 		executor.pass();
